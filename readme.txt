@@ -1,5 +1,5 @@
 
-   Welcome to Virtual PC Simulator, Ver 0.5b0.
+   Welcome to Virtual PC Simulator, Ver 0.5b1.
    
    VPCS is free software, distributed under the terms of the "BSD" licence.
    Source code and license can be found at vpcs.sf.net.

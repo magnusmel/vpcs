@@ -80,7 +80,7 @@ int daemon_port = 0;
 
 int num_pths = MAX_NUM_PTHS;  /* number of VPCs */
 
-char *devname = "tap0";  /* TAP device name (only when 1 VPC is created) */
+char *tapname = "tap0";  /* TAP device name (only when 1 VPC is created) */
 
 int macaddr = 0; /* the last byte of ether address */
 
@@ -195,7 +195,7 @@ int main(int argc, char **argv)
 					usage();
 					exit(0);
 				}
-				devname = strdup(optarg);
+				tapname = strdup(optarg);
 				break;
 
 			case 'h':
@@ -423,7 +423,7 @@ void *pth_reader(void *devid)
 			if (num_pths > 1)
 				printf("Create TAP device tap%d error [%s]\n", id, strerror(errno));
 			else
-				printf("Create TAP device %s error [%s]\n", devname, strerror(errno));
+				printf("Create TAP device %s error [%s]\n", tapname, strerror(errno));
 		else if (devtype == DEV_UDP)
 			printf("Open port %d error [%s]\n", vpc[id].lport, strerror(errno));
 		return NULL;

@@ -51,7 +51,7 @@ extern int devtype;
 
 #ifdef TAP
 extern int num_pths;
-extern char *devname;
+extern char *tapname;
 #endif
 
 int VRead(pcs *pc, void *buf, int len)
@@ -171,9 +171,9 @@ int open_tap(int id)
 	if (num_pths > 1)
 		sprintf(dev, "tap%d", id);
 	else
-		if (strlen(devname) >= IFNAMSIZ)
+		if (strlen(tapname) >= IFNAMSIZ)
 			return(-1);
-		sprintf(dev, "%s", devname);
+		sprintf(dev, "%s", tapname);
 
 	if ((fd = open("/dev/net/tun", O_RDWR)) < 0) {
 		return(-1);
