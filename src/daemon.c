@@ -57,10 +57,18 @@
 #include <libutil.h>
 #endif
 
+#ifdef cygwin
+#include <windows.h>
+#endif
+
 extern int ctrl_c;
 static int cmd_quit = 0;
 static pid_t fdtty_pid;
 static int daemon_port;
+
+#ifdef cygwin
+BOOL WINAPI handler_routine(DWORD e);
+#endif
 
 static void daemon_proc(int sock, int fdtty);
 static void sig_usr1(int sig);
@@ -93,6 +101,10 @@ daemonize(int port, int bg)
 	
 	setsid();
 	
+#ifdef cygwin
+	SetConsoleCtrlHandler(handler_routine, TRUE);
+#endif
+
 	signal(SIGTERM, &sig_term);
 	signal(SIGQUIT, &sig_quit);
 	signal(SIGINT, &sig_int);
@@ -209,6 +221,20 @@ daemon_proc(int sock, int fdtty)
 		close(sock_cli);
 	}
 }
+
+#ifdef cygwin
+/* to stop VPCS from another process on Windows
+ */
+BOOL WINAPI
+handler_routine(DWORD e)
+{
+	if (e == CTRL_BREAK_EVENT) {
+		sig_term(21);
+		return TRUE;
+	}
+	return FALSE;
+}
+#endif
 
 /* to stop VPCS from another process
  */
