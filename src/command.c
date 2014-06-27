@@ -62,6 +62,7 @@ extern const char *ver;
 extern struct rls *rls;
 extern int runLoad;
 extern int runStartup;
+extern const char *default_startupfile;
 extern int num_pths;
 
 static int set_dump(int argc, char **argv);
@@ -1872,7 +1873,7 @@ int run_save(int argc, char **argv)
 		return help_save(argc, argv);
 	}
 	else if (argc == 1) {
-		strncpy(fname, "startup.vpc", PATH_MAX - 1);
+		strncpy(fname, default_startupfile, PATH_MAX - 1);
 	}
 	else {
 		if (strlen(argv[1]) > PATH_MAX - 5) {
@@ -1928,7 +1929,7 @@ int run_save(int argc, char **argv)
 		fclose(fp);
 		printf("  done\n");
 	} else
-		printf("Can not write %s\n", argv[1]);
+		printf("failed: %s\n", strerror(errno));
 	return 1;
 }
 

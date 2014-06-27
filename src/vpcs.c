@@ -243,7 +243,7 @@ int main(int argc, char **argv)
 	}
 	pthread_create(&timer_pid, NULL, pth_timer_tick, (void *)0);
 	delay_ms(100);
-    pthread_create(&relay_pid, NULL, pth_relay, (void *)0);
+    	pthread_create(&relay_pid, NULL, pth_relay, (void *)0);
 	pcid = 0;
 
 	delay_ms(50);
@@ -315,6 +315,7 @@ void parse_cmd(char *cmdstr)
 			if (p != NULL)
 				printf("%s", p + 1);
 		}
+		fflush(stdout);
 		return;
 	}
 	

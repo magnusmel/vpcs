@@ -1,5 +1,5 @@
 
-   Welcome to Virtual PC Simulator, Ver 0.5b1.
+   Welcome to Virtual PC Simulator, Ver 0.5b2.
    
    VPCS is free software, distributed under the terms of the "BSD" licence.
    Source code and license can be found at vpcs.sf.net.
@@ -63,6 +63,12 @@ The line started with '#' or '!' will be discarded.
 Website: http://wiki.freecode.com.cn or http://mirnshi.cublog.cn
    
 History:
+
+   0.5b2   bugfix: using getenv+access to the real path of VPCS. (code copied from the source code of 'which' of FreeBSD)
+           patch for Debian GNU/kFreeBSD from Daniel Lintott
+           flush out the output buffer while running 'echo ...'
+           increase the maxinum number of tcp sessions and decrease tcp keep alive time
+           bugfix: arp table, the source ether address is not saved
    
    0.5b1   support for a specified number of vpc instances (between 1 and 9)
            support for TAP device name (only with 1 VPC instance)
@@ -79,7 +85,7 @@ History:
    0.20a   support IPv6 linklocal, stateless autoconfiguration
            new 'ping' with many optins, and implement the tcp state machine
            support load/save the VPCS configuration
-           support save/load the command history automaticlly
+           support save/load the command history automatically
            
    0.16a   Support IPv6
    0.15a   Add configure the host ip using dhcp
