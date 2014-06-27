@@ -51,9 +51,9 @@
 #include "dump.h"
 #include "relay.h"
 
-const char *ver = "0.5b1";
+const char *ver = "0.5b2";
 /* track the binary */
-static const char *ident = "$Id: vpcs.c 81 2013-09-20 08:14:15Z mirnshi $";
+static const char *ident = "$Id: vpcs.c 81 2014-06-27 08:14:15Z mirnshi $";
 
 int pcid = 0;  /* current vpc id */
 int devtype = 0;
