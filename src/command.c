@@ -1828,7 +1828,7 @@ int run_load(int argc, char **argv)
 		}
 	}
 	if (fp == NULL) {
-		printf("Can't open \"%s\"\n", argv[1]);
+		printf("Can't open \"%s\"\n", filename);
 		return -1;
 	}
 
